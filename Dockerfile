@@ -1,1 +1,3 @@
-ENTRYPOINT ["/bin/sh","-c","echo '--- /data content ----------------'; ls -l /data; echo '-----------------------------------'; sleep 3600"]
+FROM alpine:latest
+COPY myuser.session /tmp/myuser.session
+ENTRYPOINT ["/bin/sh","-c","cp /tmp/myuser.session /data/myuser.session && echo '✅ copied to /data' && sleep 3600"]
